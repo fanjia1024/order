@@ -4,8 +4,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: 12345678
-    url: jdbc:mysql://127.0.0.1:3306/springcloud-sell?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/springcloud-sell?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     jpa:
       show-sql: true
 eureka:
