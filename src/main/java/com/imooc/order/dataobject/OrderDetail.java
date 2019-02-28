@@ -1,16 +1,19 @@
 package com.imooc.order.dataobject;
 
 import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Created by fanjia
  */
 @Data
 @Entity
+@DynamicUpdate
 public class OrderDetail {
 
     @Id
@@ -33,4 +36,9 @@ public class OrderDetail {
 
     /** 商品小图. */
     private String productIcon;
+
+    private Date createTime;
+
+    private Date updateTime;
+
 }
