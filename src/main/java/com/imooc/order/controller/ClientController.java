@@ -2,11 +2,11 @@ package com.imooc.order.controller;
 
 import com.imooc.order.client.ProductClient;
 import com.imooc.order.dataobject.ProductInfo;
+import com.imooc.order.dto.CartDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,10 +40,17 @@ public class ClientController {
         return response;
     }
 
-    @GetMapping("/getProductList")
+    @GetMapping("getProductList")
     public String getProductList(){
         List<ProductInfo> list=productClient.listForOrder(Arrays.asList("164103465734242707"));
         log.info(list.toString());
         return list.toString();
+    }
+
+    @GetMapping("/decreaseStock")
+    public String decreaseStock(){
+        CartDTO cartDTO=new CartDTO("164103465734242707",3);
+        productClient.decreaseStock(Arrays.asList(cartDTO));
+        return "ok";
     }
 }
